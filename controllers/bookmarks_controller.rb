@@ -20,7 +20,7 @@ end
 post '/bookmarks/:id' do
   @bookmark = Bookmark.find(params[:id])
   @bookmark.update_attributes(params[:bookmark])
-  redirect to("bookmarks")
+  redirect to('/bookmarks')
 end
 
 post '/bookmarks' do
