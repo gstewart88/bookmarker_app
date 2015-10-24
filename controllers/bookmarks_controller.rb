@@ -33,3 +33,13 @@ post '/bookmarks/:id/delete' do
   Bookmark.find(params[:id]).destroy
   redirect to ('/bookmarks')
 end
+
+get '/bookmarks/search' do
+  # binding.pry
+  if params[:search]
+    @bookmarks = Bookmark.all(title: params[:search])
+  else
+    @bookmarks = Bookmark.all
+  end
+  erb :'bookmarks/search'
+end

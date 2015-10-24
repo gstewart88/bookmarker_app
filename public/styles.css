@@ -29,7 +29,6 @@ a {
 }
 
 header {
-animation: pulse 9s;
 background: #EEEEEE;
 margin: 0 auto;
 overflow: hidden;
@@ -53,8 +52,7 @@ p {
   width: 100%;
   }
 
-li
-{
+li {
 display: inline;
 list-style-type: none;
 }

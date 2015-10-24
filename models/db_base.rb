@@ -38,8 +38,12 @@ class DBBase
     result
   end
 
-  def self.all
-    results = run_sql("SELECT * FROM #{table_name}")
+  def self.all(conditions={})
+    # binding.pry
+    where = conditions.map { |attribute, value| "#{attribute} = #{sql_sanitize(value, get_attributes[attribute])}" }.join(' AND ')
+    where = "WHERE #{where}" unless where.empty?
+
+    results = run_sql("SELECT #{table_name}.* FROM #{table_name} #{where}")
     results.map { |result| self.new(result) }
   end
 
@@ -49,6 +53,7 @@ class DBBase
   end
 
   def self.sql_sanitize(value, type)
+    # binding.pry
     case type
       when :string
         "'#{value.to_s.gsub("'", "''")}'"

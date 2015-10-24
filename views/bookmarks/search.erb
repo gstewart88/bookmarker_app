@@ -1,0 +1,15 @@
+<form action='/bookmarks/search' method='get'>
+  <dl>
+    <dt><label for='search'>Genre :</label></dt>
+    <dd><input id='genre' type='text' name='search'></dd>
+  </dl>
+  <button>Search</button>
+</form>
+
+  <% @bookmarks.each do |bookmark| %>
+  <h2><%= bookmark.title %></h2>
+  <p><%= bookmark.genre %></p>
+  <p><%= bookmark.details %></p>
+  <p><%= bookmark.url %></p>
+  <% end %>
+
